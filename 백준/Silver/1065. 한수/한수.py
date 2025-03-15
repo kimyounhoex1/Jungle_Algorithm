@@ -16,3 +16,14 @@ def hansoo(number):
     return count
 
 print(hansoo(test_data))
+
+#h = []
+# b = int(input())
+# if b < 100:
+#     print(b)
+# else:
+#     for i in range(100,b+1):
+#         a = list(str(i))
+#         if 2 * int(a[1]) == int(a[0]) + int(a[2]):
+#             h.append(i)
+#     print(99 + len(h))
