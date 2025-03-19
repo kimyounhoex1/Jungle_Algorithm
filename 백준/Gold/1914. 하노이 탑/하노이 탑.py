@@ -3,15 +3,24 @@ import sys
 inputN = int(sys.stdin.readline())
 
 
-def hanoi(N: int, A: int, B: int, C: int):
-    if (N == 1):
-        print(A, C)
-    else:
-        hanoi(N-1, A, C, B)     # 처음 공통단계: A->B
-        hanoi(1, A, B, C)       # 중간 공통단계: 하나만 A->C
-        hanoi(N-1, B, A, C)     # 마지막 공통 단계: B->C
+def hanoi(N, start, end):
+    if N == 1:
+        print(f"{start} {end}")
+        return
+    
+    hanoi(N-1, start, 6-start-end)
+    print(f"{start} {end}")
+    hanoi(N-1, 6-start-end, end)
 
+def binary_mul(n):
+    num = 1
+    for i in range(n):
+        num = num*2
+    
+    return num
 
-print(2**inputN-1)
-if (inputN <= 20):
-    hanoi(N=inputN, A=1, B=2, C=3)
+if inputN > 20:
+    print(binary_mul(inputN) -1)
+else:
+    print(binary_mul(inputN) -1)
+    hanoi(inputN, 1, 3)
