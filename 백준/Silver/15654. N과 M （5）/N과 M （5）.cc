@@ -5,14 +5,14 @@
 using namespace std;
 
 int N, M;
+vector<int> sol;
 vector<int> arr;
-vector<int> inputArr;
 vector<bool> visited;
 
-void solution(int k, int start) {
+void solution(int k) {
   if(k == M) {
     for(int i = 0; i<M; i++) {
-      cout << arr[i] << " ";
+      cout << sol[i] << " ";
     }
     cout << "\n";
     return;
@@ -20,9 +20,9 @@ void solution(int k, int start) {
 
   for(int i = 0; i<N; i++) {
     if(!visited[i]) {
-      arr[k] = inputArr[i];
+      sol[k] = arr[i];
       visited[i] = true;
-      solution(k+1, i+1);
+      solution(k+1);
       visited[i] = false;
     }
   }
@@ -30,14 +30,15 @@ void solution(int k, int start) {
 
 int main() {
   cin >> N >> M;
-  inputArr.resize(N);
+  sol.resize(M);
+  arr.resize(N);
+  visited.resize(N);
+
   for(int i = 0; i<N; i++) {
-    cin >> inputArr[i];
+    cin >> arr[i];
   }
-  sort(inputArr.begin(), inputArr.end());
 
-  arr.resize(M);
-  visited.resize(M);
+  sort(arr.begin(), arr.end());
 
-  solution(0, 1);
+  solution(0);
 }
